@@ -1,1 +1,1 @@
-# infografia-senadoras
+# infografico-senadoras-brasileiras
