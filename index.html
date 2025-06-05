@@ -21,12 +21,16 @@
             --cor-neutro-claro: #ADB5BD;
             --cor-neutro-meio: #343A40;
             --cor-cinza-claro-fundo: #CED4DA;
+            --cor-grafico-outros: #BBBBBB;
+            /* Cor para categoria 'Outros' */
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--cor-neutro-escuro); /* Neutro Escuro */
+            background-color: var(--cor-neutro-escuro);
+            /* Dark Neutral */
         }
+
         .chart-container {
             position: relative;
             width: 100%;
@@ -42,6 +46,7 @@
                 height: 350px;
             }
         }
+
         @media (min-width: 1024px) {
             .chart-container {
                 height: 400px;
@@ -49,95 +54,156 @@
         }
 
         .no-svg-mermaid {
-            display: none; /* A hidden element to confirm no SVG/Mermaid usage */
+            display: none;
+            /* A hidden element to confirm no SVG/Mermaid usage */
         }
 
-        /* Estilos de impressão para otimizar a visualização em A4 */
+        /* Print styles to optimize A4 viewing */
         @media print {
             body {
-                background-color: #FFFFFF; /* Fundo branco para impressão */
-                color: #000000; /* Texto preto para impressão */
-                margin: 0; /* Remover margens padrão do corpo */
-                padding: 0; /* Remover preenchimento padrão do corpo */
+                background-color: #FFFFFF;
+                /* White background for printing */
+                color: #000000;
+                /* Black text for printing */
+                margin: 0;
+                /* Remove default body margins */
+                padding: 0;
+                /* Remove default body padding */
             }
+
             .container {
-                padding: 0.5cm; /* Margens para A4 */
-                max-width: 100%; /* Garantir que o container ocupe 100% da largura */
-                margin: 0 auto; /* Centralizar na página */
+                padding: 0.5cm;
+                /* Margins for A4 */
+                max-width: 100%;
+                /* Ensure container takes 100% width */
+                margin: 0 auto;
+                /* Center on page */
             }
-            h1, h2, p, span {
-                color: #000000 !important; /* Força cores de texto para preto na impressão */
+
+            h1,
+            h2,
+            p,
+            span {
+                color: #000000 !important;
+                /* Force text colors to black for printing */
             }
+
             .bg-[#F8F9FA] {
-                background-color: #FFFFFF !important; /* Garante fundo branco para as seções */
-                box-shadow: none !important; /* Remove sombras para impressão */
-                border: 1px solid #DDDDDD; /* Adiciona borda sutil */
-                margin-bottom: 1cm !important; /* Espaçamento entre seções para impressão */
+                background-color: #FFFFFF !important;
+                /* Ensure white background for sections */
+                box-shadow: none !important;
+                /* Remove shadows for printing */
+                border: 1px solid #DDDDDD;
+                /* Add subtle border */
+                margin-bottom: 1cm !important;
+                /* Spacing between sections for printing */
             }
-            /* Forçar layout de coluna única para impressão */
+
+            /* Force single column layout for printing */
             main.grid {
                 grid-template-columns: 1fr !important;
-                gap: 0.5cm !important; /* Reduzir o espaçamento entre as grades */
+                gap: 0.5cm !important;
+                /* Reduce spacing between grids */
             }
-            .md\:col-span-2, .lg\:col-span-3, .md\:col-span-1 {
-                grid-column: span 1 / span 1 !important; /* Todos os itens ocupam 1 coluna */
+
+            .md\:col-span-2,
+            .lg\:col-span-3,
+            .md\:col-span-1 {
+                grid-column: span 1 / span 1 !important;
+                /* All items take 1 column */
                 width: 100% !important;
             }
-            .chart-container {
-                height: 200px; /* Reduz a altura do gráfico para caber melhor na A4 */
-                max-height: 200px;
-                width: 100% !important; /* Garantir que o gráfico ocupe a largura total disponível */
-            }
-            /* Ajustes de fonte para impressão */
-            h1 { font-size: 2.5em !important; }
-            h2 { font-size: 1.8em !important; }
-            p { font-size: 0.9em !important; }
-            .text-sm { font-size: 0.7em !important; }
-            .text-xl { font-size: 1.1em !important; }
-            .text-5xl { font-size: 3em !important; } /* Ajuste para percentuais grandes */
-            .text-6xl { font-size: 3.5em !important; } /* Ajuste para ícones grandes */
-            .text-4xl { font-size: 1.8em !important; } /* Ajuste para ícones de título de seção */
 
-            /* Garantir que os datalabels apareçam em cores escuras sobre fundo branco na impressão */
-            .chartjs-datalabels-group .chartjs-datalabels {
-                color: #000000 !important; /* Força cor preta para datalabels em barras/linhas */
-                text-shadow: none !important; /* Remove a sombra */
+            .chart-container {
+                height: 200px;
+                /* Reduce chart height to better fit A4 */
+                max-height: 200px;
+                width: 100% !important;
+                /* Ensure chart takes full available width */
             }
-            /* Exceção para datalabels dentro de fatias de donut, se a cor original já for clara */
+
+            /* Font adjustments for printing */
+            h1 {
+                font-size: 2.5em !important;
+            }
+
+            h2 {
+                font-size: 1.8em !important;
+            }
+
+            p {
+                font-size: 0.9em !important;
+            }
+
+            .text-sm {
+                font-size: 0.7em !important;
+            }
+
+            .text-xl {
+                font-size: 1.1em !important;
+            }
+
+            .text-5xl {
+                font-size: 3em !important;
+            }
+
+            /* Adjustment for large percentages */
+            .text-6xl {
+                font-size: 3.5em !important;
+            }
+
+            /* Adjustment for large icons */
+            .text-4xl {
+                font-size: 1.8em !important;
+            }
+
+            /* Adjustment for section title icons */
+
+            /* Ensure datalabels appear in dark colors on white background for printing */
+            .chartjs-datalabels-group .chartjs-datalabels {
+                color: #000000 !important;
+                /* Force black color for datalabels on bars/lines */
+                text-shadow: none !important;
+                /* Remove shadow */
+            }
+
+            /* Exception for datalabels within donut slices if original color is already light */
             #composicaoSenadoChart .chartjs-datalabels,
             #capitalPoliticoChart .chartjs-datalabels,
             #formacaoAcademicaChart .chartjs-datalabels {
-                color: #FFFFFF !important; /* Mantém a cor branca em fatias coloridas para contraste */
+                color: #FFFFFF !important;
+                /* Keep white color on colored slices for contrast */
             }
 
-            /* Ajustes para a seção Espectro Político Predominante para empilhar */
+            /* Adjustments for Predominant Political Spectrum section to stack */
             .md\:flex-row {
                 flex-direction: column !important;
             }
-            .md\:col-span-2 > div {
-                margin-bottom: 0.5cm !important; /* Espaçamento entre os itens empilhados */
+
+            .md\:col-span-2>div {
+                margin-bottom: 0.5cm !important;
+                /* Spacing between stacked items */
             }
-        }
-    </style>
+        </style>
 </head>
 
 <body class="antialiased text-gray-800">
-    <!-- Planejamento do Infográfico:
-    - Introdução Geral
-    - Seção 1: Senadoras Eleitas por Geração (Gráfico de Barras com Datalabels e Legenda Customizada)
-    - Seção 2: Composição Atual do Senado (Gráfico de Rosca com Datalabels e Pictograma HTML/CSS)
-    - Seção 3: Projetos de Lei Apresentados (Gráfico de Barras com Datalabels)
-    - Seção 4: Projetos de Lei sobre Gênero (Gráfico de Barras e Linha com Datalabels e Legenda Customizada)
-    - Seção 5: Perfil das Senadoras (Gráficos de Rosca/Barras com Datalabels, Destaques em Texto)
-        - Capital Político (Gráfico de Rosca com Datalabels)
-        - Raça/Etnia (Gráfico de Barras com Datalabels)
-        - Formação Acadêmica (Gráfico de Rosca com Datalabels)
-        - Partido que Mais Elegeu Senadoras (Texto Destacado)
-        - Espectro Político Predominante (Texto Destacado por Geração com cor)
-        - Taxa de Reeleição (Texto e Ícones HTML/CSS)
-    - Conclusão Final (Removida conforme solicitação anterior)
+    <!-- Planning for the Infographic:
+    - General Introduction
+    - Section 1: Elected Senators by Generation (Bar Chart with Datalabels and Custom Legend)
+    - Section 2: Current Senate Composition (Donut Chart with Datalabels and HTML/CSS Pictogram)
+    - Section 3: Bills Introduced (Bar Chart with Datalabels)
+    - Section 4: Bills on Gender Issues (Bar and Line Chart with Datalabels and Custom Legend)
+    - Section 5: Senators' Profile (Donut/Bar Charts with Datalabels, Text Highlights)
+        - Political Capital (Donut Chart with Datalabels)
+        - Race/Ethnicity (Bar Chart with Datalabels)
+        - Academic Background (Donut Chart with Datalabels)
+        - Party that Elected Most Senators (Highlighted Text)
+        - Predominant Political Spectrum (Highlighted Text by Generation with color)
+        - Reelection Rate (HTML/CSS Text and Icons)
+    - Final Conclusion (Removed as per previous request)
     
-    Confirmação: Nenhuma utilização de SVG ou Mermaid JS. Todos os gráficos são Chart.js (Canvas) ou elementos HTML/CSS.
+    Confirmation: No SVG or Mermaid JS usage. All charts are Chart.js (Canvas) or HTML/CSS elements.
     -->
     <div class="no-svg-mermaid"></div>
 
@@ -162,209 +228,248 @@
 
         <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Seção: Senadoras Eleitas por Geração -->
+            <!-- Storytelling Section 1: Evolution of Representation -->
+            <div class="md:col-span-2 lg:col-span-3">
+                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Evolução da Representação</h2>
+            </div>
+
+            <!-- Section 1.1: Elected Senators by Generation -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">📈</span> Senadoras Eleitas por Geração
-                </h2>
+                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">1.1 📈</span> Senadoras Eleitas por Geração
+                </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    O aumento significativo na representação feminina ao longo das gerações demonstra que a terceira já corresponde a mais da metade do total de senadoras.
+                    O aumento significativo na representação feminina ao longo das gerações demonstra que a
+                    terceira já corresponde a mais da metade do total de senadoras.
                 </p>
                 <div class="chart-container">
                     <canvas id="senadorasEleitasChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
                     <p class="text-sm">Fonte: Dados Abertos do Senado Federal 2025</p>
-                    <!-- Legenda Customizada para Senadoras Eleitas por Geração -->
-                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base"> <!-- Aumentei a fonte para text-base -->
+                    <!-- Custom Legend for Elected Senators by Generation -->
+                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
+                        <!-- Increased font size for text-base -->
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-amarelo-otimismo);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-amarelo-otimismo);"></span>
                             <span>1ª Geração (Número de Senadoras)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-azul-confianca);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-azul-confianca);"></span>
                             <span>2ª Geração (Número de Senadoras)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-roxo-profundo);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-roxo-profundo);"></span>
                             <span>3ª Geração (Número de Senadoras)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-verde-crescimento);"></span>
-                            <span>Percentual do Total Histórico (%)</span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-verde-crescimento);"></span>
+                            <span>Média percentual no período (%)</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Seção: Composição Atual do Senado (2025) -->
+            <!-- Section 1.2: Current Senate Composition (2025) -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">🏛️</span> Composição Atual do Senado (2025)
-                </h2>
+                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">1.2 🏛️</span> Composição Atual do Senado (2025)
+                </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    Em 31 de março de 2025, a representação feminina no Senado Federal ainda é minoritária, com um número que não atinge um terço das cadeiras da Casa.
+                    Em 31 de março de 2025, a representação feminina no Senado Federal ainda é minoritária,
+                    com um número que não atinge um terço das cadeiras da Casa.
                 </p>
                 <div class="chart-container h-80">
                     <canvas id="composicaoSenadoChart"></canvas>
                 </div>
                 <div class="mt-8 text-center">
-                    <p class="text-lg font-semibold text-[var(--cor-rosa-empoderamento)] mb-2">Representação Feminina:</p>
-                    <p class="text-5xl font-bold text-[var(--cor-rosa-empoderamento)] leading-none mb-4">19%</p>
+                    <p class="text-lg font-semibold text-[var(--cor-rosa-empoderamento)] mb-2">Representação
+                        Feminina:</p>
                     <p class="text-[var(--cor-neutro-meio)] text-lg">
-                        <span class="font-bold">16 mulheres</span> (titulares e suplentes em exercício) ocupavam o cargo de senadora da República.
+                        <span class="font-bold">16 mulheres</span> (titulares e suplentes em exercício) ocupavam o
+                        cargo de senadora da República.
                     </p>
-                    <!-- Removido os emojis de mulheres -->
                 </div>
             </div>
 
-            <!-- Seção: Projetos de Lei Apresentados -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">✍️</span> Projetos de Lei Apresentados
-                </h2>
+            <!-- Storytelling Section 2: Senators' Profile -->
+            <div class="md:col-span-2 lg:col-span-3 mt-8">
+                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Perfil das Senadoras</h2>
+            </div>
+
+            <!-- Section 2.1: Political Capital -->
+            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+                    <span class="mr-2 text-3xl">💼</span> 2.1 Capital Político
+                </h3>
+                <div class="chart-container h-64">
+                    <canvas id="capitalPoliticoChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section 2.2: Race/Ethnicity -->
+            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+                    <span class="mr-2 text-3xl">👥</span> 2.2 Raça/Etnia
+                </h3>
+                <div class="chart-container h-64">
+                    <canvas id="racaEtniaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section 2.3: Academic Background -->
+            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+                    <span class="mr-2 text-3xl">🎓</span> 2.3 Formação Acadêmica
+                </h3>
+                <div class="chart-container h-64">
+                    <canvas id="formacaoAcademicaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section 2.4: Parties that Elected Most Senators (NEW CHART) -->
+            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+                    <span class="mr-2 text-3xl">🗳️</span> 2.4 Partidos que mais elegeram senadoras
+                </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    O volume de proposições apresentadas pelas senadoras cresceu expressivamente, refletindo uma atuação legislativa cada vez mais robusta.
+                    Análise dos partidos que mais contribuíram para a eleição de senadoras, considerando um total
+                    de 38 senadoras.
+                </p>
+                <div class="chart-container h-64">
+                    <canvas id="partidosElegeramChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section 2.5: Predominant Political Spectrum -->
+            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+                    <span class="mr-2 text-3xl">⚖️</span> 2.5 Espectro Político Predominante
+                </h3>
+                <div class="chart-container h-64">
+                    <canvas id="espectroPoliticoChart"></canvas>
+                </div>
+                <p class="text-sm text-[#6C757D] mt-4 text-center">
+                    A predominância do espectro político variou entre as gerações.
+                </p>
+            </div>
+
+            <!-- Section 2.6: Reelection Occurrence -->
+            <div
+                class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3 flex items-center justify-center">
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center justify-center">
+                        <span class="mr-2 text-3xl">🔄</span> 2.6 Houve ocorrência de reeleição?
+                    </h3>
+                    <div class="flex items-center justify-center mb-4">
+                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">1ª Geração:</span>
+                        <span class="text-6xl text-[var(--cor-verde-crescimento)]">✅</span>
+                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Sim</span>
+                    </div>
+                    <div class="flex items-center justify-center mb-4">
+                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">2ª Geração:</span>
+                        <span class="text-6xl text-[var(--cor-verde-crescimento)]">✅</span>
+                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Sim</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">3ª Geração:</span>
+                        <span class="text-6xl text-[var(--cor-rosa-empoderamento)]">❌</span>
+                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Não</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storytelling Section 3: Legislative Activity -->
+            <div class="md:col-span-2 lg:col-span-3 mt-8">
+                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Atuação Legislativa</h2>
+            </div>
+
+            <!-- Section 3.1: Bills Introduced -->
+            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">3.1 ✍️</span> Projetos de Lei Apresentados
+                </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    O volume de proposições apresentadas pelas senadoras cresceu expressivamente, refletindo
+                    uma atuação legislativa cada vez mais robusta.
                 </p>
                 <div class="chart-container h-80">
                     <canvas id="projetosLeiChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[#6C757D]">
-                    <p class="text-sm">1ª Geração: 278</p>
-                    <p class="text-sm">2ª Geração: 438 (+57,6%)</p>
-                    <p class="text-sm">3ª Geração: 1219 (+178.3%)</p>
+                    <p class="text-sm">Crescimento da 2ª Geração: +57,6% em relação à 1ª.</p>
+                    <p class="text-sm">Crescimento da 3ª Geração: +178.3% em relação à 2ª.</p>
+                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-amarelo-otimismo);"></span>
+                            <span>1ª Geração (PLs)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-azul-confianca);"></span>
+                            <span>2ª Geração (PLs)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-verde-crescimento);"></span>
+                            <span>3ª Geração (PLs)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Seção: Projetos de Lei sobre Gênero -->
+            <!-- Section 3.2: Growth of Legislative Production -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center justify-center">
-                    <span class="mr-3 text-4xl">🚺</span> Projetos de Lei sobre Gênero
-                </h2>
+                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">3.2 📈</span> Crescimento da Produção Legislativa
+                </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    Acompanhe a taxa de crescimento da produção legislativa ao longo das gerações.
+                </p>
+                <div class="chart-container h-80">
+                    <canvas id="crescimentoProducaoChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Section 3.3: Bills on Gender Issues -->
+            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center justify-center">
+                    <span class="mr-3 text-4xl">3.3 🚺</span> Projetos de Lei sobre Gênero
+                </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6 text-center">
-                    A proporção de PLs sobre questões de gênero aumentou significativamente, evidenciando uma maior prioridade nessas pautas.
+                    A proporção de PLs sobre questões de gênero aumentou significativamente, evidenciando uma
+                    maior prioridade nessas pautas.
                 </p>
                 <div class="chart-container h-80">
                     <canvas id="plsGeneroChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
-                    <p class="text-sm">1ª Geração: 16 (5.8% do total)</p>
-                    <p class="text-sm">2ª Geração: 29 (6.6% do total)</p>
-                    <p class="text-sm">3ª Geração: 145 (11.9% do total)</p>
-
-                    <!-- Legenda Customizada para Projetos de Lei sobre Gênero -->
-                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base"> <!-- Aumentei a fonte para text-base -->
+                    <p class="text-sm">A proporção de PLs sobre questões de gênero aumentou em cada geração.</p>
+                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-amarelo-otimismo);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-amarelo-otimismo);"></span>
                             <span>1ª Geração (PLs)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-azul-confianca);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-azul-confianca);"></span>
                             <span>2ª Geração (PLs)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-rosa-empoderamento);"></span>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-rosa-empoderamento);"></span>
                             <span>3ª Geração (PLs)</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-3 h-3 rounded-full mr-2" style="background-color: var(--cor-verde-crescimento);"></span>
-                            <span>Percentual Total (%)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Seção: Perfil das Senadoras -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">👩‍💼</span> Perfil das Senadoras
-                </h2>
-                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    Detalhes sobre o perfil das senadoras.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <!-- Subseção: Capital Político -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Capital Político</h3>
-                        <div class="chart-container h-64">
-                            <canvas id="capitalPoliticoChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Subseção: Raça/Etnia -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Raça/Etnia</h3>
-                        <div class="chart-container h-64">
-                            <canvas id="racaEtniaChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Subseção: Formação Acadêmica -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm">
-                        <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Formação Acadêmica</h3>
-                        <div class="chart-container h-64">
-                            <canvas id="formacaoAcademicaChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Subseção: Partido que Mais Elegeu Senadoras -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm flex flex-col justify-center items-center">
-                        <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Partido que Mais Elegeu Senadoras</h3>
-                        <p class="text-6xl font-bold text-[var(--cor-roxo-profundo)]">PT</p>
-                        <p class="text-lg text-[var(--cor-neutro-meio)] mt-2">(Partido dos Trabalhadores)</p>
-                    </div>
-
-                    <!-- Subseção: Espectro Político Predominante -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm md:col-span-2">
-                        <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Espectro Político Predominante</h3>
-                        <div class="flex flex-col md:flex-row justify-around items-center text-center gap-6 py-4">
-                            <div class="flex flex-col items-center p-2 rounded-md">
-                                <div class="flex items-center mb-2">
-                                    <div class="w-4 h-4 rounded-full mr-2" style="background-color: var(--cor-rosa-empoderamento);"></div>
-                                    <p class="text-2xl font-bold text-[var(--cor-neutro-meio)]">1ª Geração</p>
-                                </div>
-                                <p class="text-lg text-[var(--cor-roxo-profundo)]">Esquerda</p>
-                            </div>
-                            <div class="flex flex-col items-center p-2 rounded-md">
-                                <div class="flex items-center mb-2">
-                                    <div class="w-4 h-4 rounded-full mr-2" style="background-color: var(--cor-azul-confianca);"></div>
-                                    <p class="text-2xl font-bold text-[var(--cor-neutro-meio)]">2ª Geração</p>
-                                </div>
-                                <p class="text-lg text-[var(--cor-azul-confianca)]">Centro</p>
-                            </div>
-                            <div class="flex flex-col items-center p-2 rounded-md">
-                                <div class="flex items-center mb-2">
-                                    <div class="w-4 h-4 rounded-full mr-2" style="background-color: var(--cor-amarelo-otimismo);"></div>
-                                    <p class="text-2xl font-bold text-[var(--cor-neutro-meio)]">3ª Geração</p>
-                                </div>
-                                <p class="text-lg text-[var(--cor-rosa-empoderamento)]">Direita</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-[#6C757D] mt-4 text-center">
-                            A predominância do espectro político variou entre as gerações.
-                        </p>
-                    </div>
-
-                    <!-- Subseção: Taxa de Reeleição -->
-                    <div class="bg-[#F8F9FA] rounded-lg p-6 shadow-sm md:col-span-2 flex items-center justify-center">
-                        <div class="text-center">
-                            <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4">Taxa de Reeleição</h3>
-                            <div class="flex items-center justify-center mb-4">
-                                <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">1ª Geração:</span>
-                                <span class="text-6xl text-[var(--cor-verde-crescimento)]">📈</span>
-                                <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Alta</span>
-                            </div>
-                            <div class="flex items-center justify-center mb-4">
-                                <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">2ª Geração:</span>
-                                <span class="text-6xl text-[var(--cor-verde-crescimento)]">📈</span>
-                                <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Alta</span>
-                            </div>
-                            <div class="flex items-center justify-center">
-                                <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">3ª Geração:</span>
-                                <span class="text-6xl text-[var(--cor-rosa-empoderamento)]">📉</span>
-                                <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Baixa</span>
-                            </div>
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-verde-crescimento);"></span>
+                            <span>Percentual em comparação com o total (100%)</span>
                         </div>
                     </div>
                 </div>
@@ -373,15 +478,17 @@
         </main>
 
         <footer class="text-center mt-12 text-[var(--cor-neutro-claro)] text-sm">
-            <p>&copy; 2025 Deep Research Report. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Deep Research Report.</p>
             <p class="text-sm text-[var(--cor-neutro-claro)] mt-4">
-                A utilização deste infográfico ou de qualquer parte dele, em qualquer forma ou meio, é expressamente proibida sem a autorização prévia e escrita do autor. A violação dos direitos autorais poderá resultar em ações judiciais e indenização por danos materiais e morais. Todos os direitos reservados.
+                Os dados e informações contidos neste infográfico são resultados de pesquisa de doutorado. Conforme os
+                princípios da Ciência Aberta, o uso e compartilhamento dos dados são permitidos, desde que a autoria de
+                Alana Fagundes Valério (Universidade de São Paulo, 2025) seja devidamente mencionada.
             </p>
         </footer>
     </div>
 
     <script>
-        // Função auxiliar para quebrar labels longas
+        // Auxiliary function to wrap long labels
         function wrapLabel(label, maxLength = 16) {
             if (typeof label !== 'string' || label.length <= maxLength) {
                 return label;
@@ -404,12 +511,12 @@
             return lines;
         }
 
-        // Configuração de Tooltip padrão para Chart.js
+        // Default Tooltip configuration for Chart.js
         const defaultTooltipConfig = {
             plugins: {
                 tooltip: {
                     callbacks: {
-                        title: function(tooltipItems) {
+                        title: function (tooltipItems) {
                             const item = tooltipItems[0];
                             let label = item.chart.data.labels[item.dataIndex];
                             if (Array.isArray(label)) {
@@ -423,12 +530,12 @@
             }
         };
 
-        // Dados e Gráficos
-        document.addEventListener('DOMContentLoaded', function() {
-            // Registrar o plugin datalabels globalmente
+        // Data and Charts
+        document.addEventListener('DOMContentLoaded', function () {
+            // Register datalabels plugin globally
             Chart.register(ChartDataLabels);
 
-            // Cores da paleta "Poder e Progresso" (acessíveis via variáveis CSS ou diretamente aqui)
+            // "Poder e Progresso" color palette (accessible via CSS variables or directly here)
             const corRoxoProfundo = getComputedStyle(document.documentElement).getPropertyValue('--cor-roxo-profundo').trim();
             const corAzulConfianca = getComputedStyle(document.documentElement).getPropertyValue('--cor-azul-confianca').trim();
             const corRosaEmpoderamento = getComputedStyle(document.documentElement).getPropertyValue('--cor-rosa-empoderamento').trim();
@@ -438,9 +545,10 @@
             const corNeutroClaro = getComputedStyle(document.documentElement).getPropertyValue('--cor-neutro-claro').trim();
             const corNeutroMeio = getComputedStyle(document.documentElement).getPropertyValue('--cor-neutro-meio').trim();
             const corCinzaClaroFundo = getComputedStyle(document.documentElement).getPropertyValue('--cor-cinza-claro-fundo').trim();
+            const corGraficoOutros = getComputedStyle(document.documentElement).getPropertyValue('--cor-grafico-outros').trim();
 
 
-            // Configuração padrão dos datalabels para cores escuras em fundos claros (para impressão)
+            // Default datalabels configuration for dark colors on light backgrounds (for printing)
             const defaultDatalabelsConfig = {
                 color: corNeutroMeio,
                 font: {
@@ -454,48 +562,48 @@
                 textShadowColor: 'transparent'
             };
 
-            // Gráfico: Senadoras Eleitas por Geração
+            // Chart: Elected Senators by Generation
             const ctxSenadorasEleitas = document.getElementById('senadorasEleitasChart').getContext('2d');
             new Chart(ctxSenadorasEleitas, {
                 type: 'bar',
                 data: {
                     labels: ['1ª Geração (1991-2002)', '2ª Geração (2003-2010)', '3ª Geração (2011-2022)'].map(label => wrapLabel(label)),
                     datasets: [{
-                        label: 'Número de Senadoras Eleitas', // Este label será filtrado da legenda do Chart.js
+                        label: 'Número de Senadoras Eleitas',
                         data: [7, 10, 21],
                         backgroundColor: [corAmareloOtimismo, corAzulConfianca, corRoxoProfundo],
                         borderRadius: 8,
-                        datalabels: { // Datalabels para as barras (número de senadoras)
+                        datalabels: {
                             display: true,
                             formatter: (value) => value,
-                            color: '#FFFFFF', // Cor branca para datalabels nas barras
+                            color: '#FFFFFF',
                             font: {
                                 weight: 'bold',
-                                size: 14 // Aumentei a fonte para os datalabels
+                                size: 14
                             },
-                            align: 'center', // Centraliza o label na barra
+                            align: 'center',
                             anchor: 'center',
                             textShadowBlur: 2,
                             textShadowColor: 'rgba(0, 0, 0, 0.6)'
                         }
                     }, {
-                        label: 'Percentual do Total Histórico (%)', // Este label será filtrado da legenda do Chart.js
+                        label: 'Média percentual no período (%)',
                         data: [18, 26, 55],
                         type: 'line',
                         borderColor: corVerdeCrescimento,
-                        backgroundColor: `${corVerdeCrescimento}33`, /* 20% opacity */
+                        backgroundColor: `${corVerdeCrescimento}33`,
                         fill: false,
                         tension: 0.3,
                         yAxisID: 'y1',
                         datalabels: {
                             display: true,
                             formatter: (value) => value + '%',
-                            color: corNeutroMeio, // Cor ajustada para impressão
+                            color: corNeutroMeio,
                             align: 'end',
                             anchor: 'end',
                             offset: 8,
                             font: {
-                                size: 14 // Aumentei a fonte para os datalabels
+                                size: 14
                             }
                         }
                     }]
@@ -512,7 +620,7 @@
                             ticks: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte das ticks do eixo X
+                                    size: 16
                                 }
                             }
                         },
@@ -523,13 +631,13 @@
                                 text: 'Número de Senadoras',
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y
+                                    size: 16
                                 }
                             },
                             ticks: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y
+                                    size: 14
                                 }
                             }
                         },
@@ -545,37 +653,37 @@
                                 text: 'Percentual (%)',
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y1
+                                    size: 16
                                 }
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + '%';
                                 },
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y1
+                                    size: 14
                                 }
                             }
                         }
                     },
                     plugins: {
                         legend: {
-                            display: false, // Oculta a legenda padrão do Chart.js, pois temos uma customizada
+                            display: false,
                         },
-                        datalabels: { // Configuração padrão, mas será sobrescrita por dataset se necessário
+                        datalabels: {
                             ...defaultDatalabelsConfig,
                         }
                     }
                 }
             });
 
-            // Gráfico: Composição Atual do Senado (Donut Chart)
+            // Chart: Current Senate Composition (Donut Chart)
             const ctxComposicaoSenado = document.getElementById('composicaoSenadoChart').getContext('2d');
             new Chart(ctxComposicaoSenado, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Mulheres (19%)', 'Homens (81%)'].map(label => wrapLabel(label)),
+                    labels: ['Mulheres', 'Homens'].map(label => wrapLabel(label)),
                     datasets: [{
                         data: [19, 81],
                         backgroundColor: [corRoxoProfundo, corCinzaClaroFundo],
@@ -584,10 +692,10 @@
                         datalabels: {
                             display: true,
                             formatter: (value) => value + '%',
-                            color: '#FFFFFF', // Mantém branco para contraste nas fatias coloridas
+                            color: '#FFFFFF',
                             font: {
                                 weight: 'bold',
-                                size: 16 // Aumentei a fonte para os datalabels
+                                size: 16
                             },
                             textShadowBlur: 2,
                             textShadowColor: 'rgba(0, 0, 0, 0.6)'
@@ -604,14 +712,14 @@
                             labels: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte da legenda
+                                    size: 16
                                 },
                                 padding: 20
                             }
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     let label = context.label || '';
                                     if (label) {
                                         label += ': ';
@@ -628,26 +736,103 @@
                 }
             });
 
-            // Gráfico: Volume de Proposições Apresentadas
-            const ctxProjetosLei = document.getElementById('projetosLeiChart').getContext('2d');
-            new Chart(ctxProjetosLei, {
+            // Chart: Political Capital
+            const ctxCapitalPolitico = document.getElementById('capitalPoliticoChart').getContext('2d');
+            new Chart(ctxCapitalPolitico, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Militante', 'Herdeira', 'Outsider'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        data: [57.9, 28.9, 13.2],
+                        backgroundColor: [corVerdeCrescimento, corAmareloOtimismo, corRosaEmpoderamento],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value.toFixed(1) + '%',
+                            color: '#FFFFFF',
+                            font: {
+                                weight: 'bold',
+                                size: 16
+                            },
+                            textShadowBlur: 2,
+                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                },
+                                padding: 20,
+                                generateLabels: function (chart) {
+                                    const data = chart.data;
+                                    if (data.labels.length && data.datasets.length) {
+                                        return data.labels.map(function (label, i) {
+                                            const meta = chart.getDatasetMeta(0);
+                                            const ds = data.datasets[0];
+                                            const backgroundColor = ds.backgroundColor[i];
+                                            return {
+                                                text: `${label}`,
+                                                fillStyle: backgroundColor,
+                                                strokeStyle: ds.borderColor,
+                                                lineWidth: ds.borderWidth,
+                                                hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+                                                index: i
+                                            };
+                                        });
+                                    }
+                                    return [];
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed.toFixed(1) + '%';
+                                    }
+                                    return label;
+                                },
+                                ...defaultTooltipConfig.plugins.tooltip.callbacks
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart: Race/Ethnicity
+            const ctxRacaEtnia = document.getElementById('racaEtniaChart').getContext('2d');
+            new Chart(ctxRacaEtnia, {
                 type: 'bar',
                 data: {
-                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    labels: ['Branca', 'Não-brancas'].map(label => wrapLabel(label)),
                     datasets: [{
-                        label: 'Projetos de Lei Apresentados',
-                        data: [278, 438, 1219],
-                        backgroundColor: [corAmareloOtimismo, corAzulConfianca, corVerdeCrescimento],
+                        label: 'Percentual (%)',
+                        data: [84.2, 15.8],
+                        backgroundColor: [corRoxoProfundo, corAmareloOtimismo],
                         borderRadius: 8,
                         datalabels: {
                             ...defaultDatalabelsConfig,
-                            formatter: (value) => value,
-                            color: corNeutroMeio, // Cor ajustada para impressão
+                            formatter: (value) => value.toFixed(1) + '%',
+                            color: corNeutroMeio,
                             align: 'end',
                             anchor: 'end',
                             offset: 4,
                             font: {
-                                size: 14 // Aumentei a fonte para os datalabels
+                                size: 14
                             }
                         }
                     }]
@@ -664,7 +849,7 @@
                             ticks: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte das ticks do eixo X
+                                    size: 16
                                 }
                             }
                         },
@@ -672,16 +857,19 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Número de PLs',
+                                text: 'Percentual (%)',
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y
+                                    size: 16
                                 }
                             },
                             ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                },
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y
+                                    size: 14
                                 }
                             }
                         }
@@ -694,48 +882,334 @@
                 }
             });
 
-            // Gráfico: Projetos de Lei sobre Gênero
-            const ctxPlsGenero = document.getElementById('plsGeneroChart').getContext('2d');
-            new Chart(ctxPlsGenero, {
-                type: 'bar',
+            // Chart: Formação Acadêmica
+            const ctxFormacaoAcademia = document.getElementById('formacaoAcademicaChart').getContext('2d');
+            new Chart(ctxFormacaoAcademia, {
+                type: 'doughnut',
                 data: {
-                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    labels: ['Ensino Superior', 'Outros'].map(label => wrapLabel(label)),
                     datasets: [{
-                        label: 'Projetos de Lei sobre Gênero',
-                        data: [16, 29, 145],
-                        backgroundColor: [corAmareloOtimismo, corAzulConfianca, corRosaEmpoderamento],
-                        borderRadius: 8,
-                        datalabels: { // Datalabels para as barras (número de PLs)
+                        data: [94, 6],
+                        backgroundColor: [corAzulConfianca, corAmareloOtimismo],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        datalabels: {
                             display: true,
-                            formatter: (value) => value,
-                            color: '#FFFFFF', // Cor branca para datalabels nas barras
+                            formatter: (value) => value.toFixed(1) + '%',
+                            color: '#FFFFFF',
                             font: {
                                 weight: 'bold',
-                                size: 14 // Aumentei a fonte para os datalabels
+                                size: 16
                             },
-                            align: 'center', // Centraliza o label na barra
+                            textShadowBlur: 2,
+                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed.toFixed(1) + '%';
+                                    }
+                                    return label;
+                                },
+                                ...defaultTooltipConfig.plugins.tooltip.callbacks
+                            }
+                        }
+                    }
+                }
+            });
+
+            // NEW Chart: Partidos que mais elegeram senadoras (2.4)
+            const ctxPartidosElegeram = document.getElementById('partidosElegeramChart').getContext('2d');
+            new Chart(ctxPartidosElegeram, {
+                type: 'bar',
+                data: {
+                    labels: ['PT', 'MDB', 'Outros'],
+                    datasets: [{
+                        label: 'Número de Senadoras Eleitas',
+                        data: [11, 4, 23], // Total 38 (11+4+23)
+                        backgroundColor: [corRoxoProfundo, corAzulConfianca, corGraficoOutros],
+                        borderRadius: 8,
+                        datalabels: {
+                            display: true,
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${value} (${percentage}%)`;
+                            },
+                            color: '#FFFFFF',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
                             anchor: 'center',
                             textShadowBlur: 2,
                             textShadowColor: 'rgba(0, 0, 0, 0.6)'
                         }
-                    }, {
-                        label: 'Percentual do Total (%)',
-                        data: [5.8, 6.6, 11.9],
-                        type: 'line',
-                        borderColor: corVerdeCrescimento,
-                        backgroundColor: `${corVerdeCrescimento}33`, /* 20% opacity */
-                        fill: false,
-                        tension: 0.3,
-                        yAxisID: 'y1',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    indexAxis: 'y', // Horizontal bars
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Número de Senadoras',
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Chart: Predominant Political Spectrum (2.5)
+            const ctxEspectroPolitico = document.getElementById('espectroPoliticoChart').getContext('2d');
+            new Chart(ctxEspectroPolitico, {
+                type: 'bar',
+                data: {
+                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Espectro Predominante',
+                        data: [57, 60, 62],
+                        backgroundColor: [corRoxoProfundo, corAzulConfianca, corRosaEmpoderamento],
+                        borderRadius: 4,
                         datalabels: {
                             display: true,
-                            formatter: (value) => value.toFixed(1) + '%', // Garante que o percentual apareça com 1 casa decimal e o símbolo %
-                            color: corNeutroMeio, // Cor ajustada para impressão
+                            formatter: (value, context) => {
+                                const labelMap = {
+                                    0: 'Esquerda',
+                                    1: 'Centro',
+                                    2: 'Direita'
+                                };
+                                return `${value}% (${labelMap[context.dataIndex]})`;
+                            },
+                            color: '#FFFFFF',
+                            align: 'center',
+                            anchor: 'center',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            textShadowBlur: 2,
+                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                        }
+                    }, {
+                        label: 'Outros Espectros',
+                        data: [100 - 57, 100 - 60, 100 - 62],
+                        backgroundColor: corCinzaClaroFundo,
+                        borderRadius: 4,
+                        datalabels: {
+                            display: false
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    indexAxis: 'x',
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentual (%)',
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                },
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: corCinzaClaroFundo
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                },
+                                padding: 20
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart: Bills Introduced (3.1)
+            const ctxProjetosLei = document.getElementById('projetosLeiChart').getContext('2d');
+            new Chart(ctxProjetosLei, {
+                type: 'bar',
+                data: {
+                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Projetos de Lei Apresentados',
+                        data: [278, 438, 1219],
+                        backgroundColor: [corAmareloOtimismo, corAzulConfianca, corVerdeCrescimento],
+                        borderRadius: 8,
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value,
+                            color: '#FFFFFF',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
+                            anchor: 'center',
+                            textShadowBlur: 2,
+                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Número de PLs',
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Chart: Growth of Legislative Production (3.2)
+            const ctxCrescimentoProducao = document.getElementById('crescimentoProducaoChart').getContext('2d');
+            new Chart(ctxCrescimentoProducao, {
+                type: 'line',
+                data: {
+                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Taxa de Crescimento da Produção Legislativa',
+                        data: [0, 57.6, 178.3],
+                        borderColor: corRoxoProfundo,
+                        backgroundColor: `${corRoxoProfundo}33`,
+                        fill: true,
+                        tension: 0.6,
+                        pointBackgroundColor: corRoxoProfundo,
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value.toFixed(1) + '%',
+                            color: corNeutroMeio,
                             align: 'end',
                             anchor: 'end',
                             offset: 8,
                             font: {
-                                size: 14 // Aumentei a fonte para os datalabels
+                                weight: 'bold',
+                                size: 14
                             }
                         }
                     }]
@@ -752,7 +1226,98 @@
                             ticks: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte das ticks do eixo X
+                                    size: 16
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Crescimento Percentual (%)',
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                },
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Chart: Bills on Gender Issues (3.3)
+            const ctxPlsGenero = document.getElementById('plsGeneroChart').getContext('2d');
+            new Chart(ctxPlsGenero, {
+                type: 'bar',
+                data: {
+                    labels: ['1ª Geração', '2ª Geração', '3ª Geração'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Projetos de Lei sobre Gênero',
+                        data: [16, 29, 145],
+                        backgroundColor: [corAmareloOtimismo, corAzulConfianca, corRosaEmpoderamento],
+                        borderRadius: 8,
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value,
+                            color: '#FFFFFF',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
+                            anchor: 'center',
+                            textShadowBlur: 2,
+                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                        }
+                    }, {
+                        label: 'Percentual em comparação com o total (100%)',
+                        data: [5.8, 6.6, 11.9],
+                        type: 'line',
+                        borderColor: corVerdeCrescimento,
+                        backgroundColor: `${corVerdeCrescimento}33`,
+                        fill: false,
+                        tension: 0.3,
+                        yAxisID: 'y1',
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value.toFixed(1) + '%',
+                            color: corNeutroMeio,
+                            align: 'end',
+                            anchor: 'end',
+                            offset: 8,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
                                 }
                             }
                         },
@@ -763,13 +1328,13 @@
                                 text: 'Número de PLs',
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y
+                                    size: 16
                                 }
                             },
                             ticks: {
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y
+                                    size: 14
                                 }
                             }
                         },
@@ -785,216 +1350,27 @@
                                 text: 'Percentual (%)',
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y1
+                                    size: 16
                                 }
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + '%';
                                 },
                                 color: corNeutroMeio,
                                 font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y1
+                                    size: 14
                                 }
                             }
                         }
                     },
                     plugins: {
                         legend: {
-                            display: false, // Oculta a legenda padrão do Chart.js para este gráfico
+                            display: false,
                         }
                     }
                 }
             });
-
-            // Gráfico: Capital Político
-            const ctxCapitalPolitico = document.getElementById('capitalPoliticoChart').getContext('2d');
-            new Chart(ctxCapitalPolitico, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Militante (57.9%)', 'Herdeira (28.9%)', 'Outsider (13.2%)'].map(label => wrapLabel(label)),
-                    datasets: [{
-                        data: [57.9, 28.9, 13.2],
-                        backgroundColor: [corVerdeCrescimento, corAmareloOtimismo, corRosaEmpoderamento],
-                        borderColor: '#FFFFFF',
-                        borderWidth: 2,
-                        datalabels: {
-                            display: true,
-                            formatter: (value) => value.toFixed(1) + '%',
-                            color: '#FFFFFF', // Mantém branco para contraste nas fatias coloridas
-                            font: {
-                                weight: 'bold',
-                                size: 16 // Aumentei a fonte para os datalabels
-                            },
-                            textShadowBlur: 2,
-                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
-                        }
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    ...defaultTooltipConfig,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: corNeutroMeio,
-                                font: {
-                                    size: 16 // Aumentei a fonte da legenda
-                                },
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed !== null) {
-                                        label += context.parsed.toFixed(1) + '%';
-                                    }
-                                    return label;
-                                },
-                                ...defaultTooltipConfig.plugins.tooltip.callbacks
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Gráfico: Raça/Etnia
-            const ctxRacaEtnia = document.getElementById('racaEtniaChart').getContext('2d');
-            new Chart(ctxRacaEtnia, {
-                type: 'bar',
-                data: {
-                    labels: ['Branca (84.2%)', 'Não-brancas (15.8%)'].map(label => wrapLabel(label)),
-                    datasets: [{
-                        label: 'Percentual (%)',
-                        data: [84.2, 15.8],
-                        backgroundColor: [corRoxoProfundo, corAmareloOtimismo],
-                        borderRadius: 8,
-                        datalabels: {
-                            ...defaultDatalabelsConfig,
-                            formatter: (value) => value.toFixed(1) + '%',
-                            color: corNeutroMeio, // Cor ajustada para impressão
-                            align: 'end',
-                            anchor: 'end',
-                            offset: 4,
-                            font: {
-                                size: 14 // Aumentei a fonte para os datalabels
-                            }
-                        }
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    ...defaultTooltipConfig,
-                    scales: {
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: corNeutroMeio,
-                                font: {
-                                    size: 16 // Aumentei a fonte das ticks do eixo X
-                                }
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Percentual (%)',
-                                color: corNeutroMeio,
-                                font: {
-                                    size: 16 // Aumentei a fonte do título do eixo Y
-                                }
-                            },
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                },
-                                color: corNeutroMeio,
-                                font: {
-                                    size: 14 // Aumentei a fonte das ticks do eixo Y
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-
-            // Gráfico: Formação Acadêmica
-            const ctxFormacaoAcademia = document.getElementById('formacaoAcademicaChart').getContext('2d');
-            new Chart(ctxFormacaoAcademia, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Ensino Superior (94%)', 'Outros (6%)'].map(label => wrapLabel(label)),
-                    datasets: [{
-                        data: [94, 6],
-                        backgroundColor: [corAzulConfianca, corAmareloOtimismo],
-                        borderColor: '#FFFFFF',
-                        borderWidth: 2,
-                        datalabels: {
-                            display: true,
-                            formatter: (value) => value.toFixed(1) + '%',
-                            color: '#FFFFFF', // Mantém branco para contraste nas fatias coloridas
-                            font: {
-                                weight: 'bold',
-                                size: 16 // Aumentei a fonte para os datalabels
-                            },
-                            textShadowBlur: 2,
-                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
-                        }
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    ...defaultTooltipConfig,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: corNeutroMeio,
-                                font: {
-                                    size: 16 // Aumentei a fonte da legenda
-                                },
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed !== null) {
-                                        label += context.parsed.toFixed(1) + '%';
-                                    }
-                                    return label;
-                                },
-                                ...defaultTooltipConfig.plugins.tooltip.callbacks
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Gráfico: Espectro Político Predominante por Geração
-            // Este gráfico foi alterado para uma representação em texto direto no HTML,
-            // conforme o formato do PDF, pois o PDF não fornecia dados percentuais para um gráfico de barras.
         });
     </script>
 </body>
