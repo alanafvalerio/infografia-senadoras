@@ -184,7 +184,8 @@
                 margin-bottom: 0.5cm !important;
                 /* Spacing between stacked items */
             }
-        </style>
+        }
+    </style>
 </head>
 
 <body class="antialiased text-gray-800">
@@ -214,9 +215,9 @@
                 <span class="block text-[var(--cor-roxo-profundo)]">Três Gerações de Senadoras Brasileiras</span>
             </h1>
             <p class="text-xl text-[var(--cor-neutro-claro)] leading-relaxed max-w-3xl mx-auto">
-                Os dados consolidados de pesquisa apontam para um cenário complexo nas três gerações de
-                eleitas (1991 a 2022) e na produção legislativa do periodo entre 1º de fevereiro de 1991 a 31 de
-                março de 2025, data da conclusão do estudo.
+                Este estudo analisa o cenário das senadoras eleitas em três gerações: a 1ª Geração (1991-2002),
+                a 2ª Geração (2003-2010) e a 3ª Geração (2011-2022). A pesquisa abrange a produção legislativa
+                no período de 1º de fevereiro de 1991 a 31 de março de 2025, data de sua conclusão.
             </p>
             <p class="text-lg text-[var(--cor-neutro-claro)] mt-6">
                 Elaborado por: <span class="font-bold text-[var(--cor-rosa-empoderamento)]">Alana Fagundes Valério</span>
@@ -228,25 +229,29 @@
 
         <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Storytelling Section 1: Evolution of Representation -->
+            <!-- Storytelling Section 1: Evolução da Representação -->
             <div class="md:col-span-2 lg:col-span-3">
                 <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Evolução da Representação</h2>
             </div>
 
-            <!-- Section 1.1: Elected Senators by Generation -->
+            <!-- Section 1.1: Senadoras Eleitas por Geração -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
                 <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">1.1 📈</span> Senadoras Eleitas por Geração
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    O aumento significativo na representação feminina ao longo das gerações demonstra que a
-                    terceira já corresponde a mais da metade do total de senadoras.
+                    O número de senadoras eleitas aumentou significativamente entre as gerações, com a terceira
+                    geração representando mais da metade do total.
                 </p>
                 <div class="chart-container">
                     <canvas id="senadorasEleitasChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
                     <p class="text-sm">Fonte: Dados Abertos do Senado Federal 2025</p>
+                    <p class="text-sm mt-2">
+                        *A "Média percentual no período (%)" refere-se à proporção de senadoras eleitas em cada
+                        geração em relação ao total de parlamentares eleitas como titulares.
+                    </p>
                     <!-- Custom Legend for Elected Senators by Generation -->
                     <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
                         <!-- Increased font size for text-base -->
@@ -274,14 +279,14 @@
                 </div>
             </div>
 
-            <!-- Section 1.2: Current Senate Composition (2025) -->
+            <!-- Section 1.2: Composição Atual do Senado (2025) -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
                 <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">1.2 🏛️</span> Composição Atual do Senado (2025)
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
                     Em 31 de março de 2025, a representação feminina no Senado Federal ainda é minoritária,
-                    com um número que não atinge um terço das cadeiras da Casa.
+                    com menos de um terço das cadeiras ocupadas por mulheres.
                 </p>
                 <div class="chart-container h-80">
                     <canvas id="composicaoSenadoChart"></canvas>
@@ -296,42 +301,51 @@
                 </div>
             </div>
 
-            <!-- Storytelling Section 2: Senators' Profile -->
+            <!-- Storytelling Section 2: Perfil das Senadoras -->
             <div class="md:col-span-2 lg:col-span-3 mt-8">
                 <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Perfil das Senadoras</h2>
             </div>
 
-            <!-- Section 2.1: Political Capital -->
+            <!-- Section 2.1: Capital Político -->
             <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
                 <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">💼</span> 2.1 Capital Político
                 </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    A distribuição do capital político entre as senadoras eleitas.
+                </p>
                 <div class="chart-container h-64">
                     <canvas id="capitalPoliticoChart"></canvas>
                 </div>
             </div>
 
-            <!-- Section 2.2: Race/Ethnicity -->
+            <!-- Section 2.2: Raça/Etnia -->
             <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
                 <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">👥</span> 2.2 Raça/Etnia
                 </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    A representação de raça e etnia entre as senadoras.
+                </p>
                 <div class="chart-container h-64">
                     <canvas id="racaEtniaChart"></canvas>
                 </div>
             </div>
 
-            <!-- Section 2.3: Academic Background -->
+            <!-- Section 2.3: Formação Acadêmica -->
             <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
                 <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">🎓</span> 2.3 Formação Acadêmica
                 </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    Nível de formação acadêmica das senadoras.
+                </p>
                 <div class="chart-container h-64">
                     <canvas id="formacaoAcademicaChart"></canvas>
                 </div>
             </div>
 
-            <!-- Section 2.4: Parties that Elected Most Senators (NEW CHART) -->
+            <!-- Section 2.4: Partidos que mais elegeram senadoras -->
             <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
                 <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">🗳️</span> 2.4 Partidos que mais elegeram senadoras
@@ -345,64 +359,79 @@
                 </div>
             </div>
 
-            <!-- Section 2.5: Predominant Political Spectrum -->
+            <!-- Section 2.5: Espectro Político Predominante -->
             <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
                 <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">⚖️</span> 2.5 Espectro Político Predominante
                 </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    A predominância do espectro político variou entre as gerações.
+                </p>
                 <div class="chart-container h-64">
                     <canvas id="espectroPoliticoChart"></canvas>
                 </div>
-                <p class="text-sm text-[#6C757D] mt-4 text-center">
-                    A predominância do espectro político variou entre as gerações.
-                </p>
-            </div>
-
-            <!-- Section 2.6: Reelection Occurrence -->
-            <div
-                class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3 flex items-center justify-center">
-                <div class="text-center">
-                    <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center justify-center">
-                        <span class="mr-2 text-3xl">🔄</span> 2.6 Houve ocorrência de reeleição?
-                    </h3>
-                    <div class="flex items-center justify-center mb-4">
-                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">1ª Geração:</span>
-                        <span class="text-6xl text-[var(--cor-verde-crescimento)]">✅</span>
-                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Sim</span>
-                    </div>
-                    <div class="flex items-center justify-center mb-4">
-                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">2ª Geração:</span>
-                        <span class="text-6xl text-[var(--cor-verde-crescimento)]">✅</span>
-                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Sim</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <span class="text-4xl mr-4 text-[var(--cor-neutro-meio)]">3ª Geração:</span>
-                        <span class="text-6xl text-[var(--cor-rosa-empoderamento)]">❌</span>
-                        <span class="text-2xl font-bold text-[var(--cor-neutro-meio)] ml-2">Não</span>
+                <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
+                    <!-- Custom Legend for Espectro Político Predominante -->
+                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-roxo-profundo);"></span>
+                            <span>1ª Geração (Esquerda)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-azul-confianca);"></span>
+                            <span>2ª Geração (Centro)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-rosa-empoderamento);"></span>
+                            <span>3ª Geração (Direita)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 rounded-full mr-2"
+                                style="background-color: var(--cor-cinza-claro-fundo);"></span>
+                            <span>Outros Espectros</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Storytelling Section 3: Legislative Activity -->
+            <!-- Section 2.6: Reeleição -->
+            <div
+                class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center">
+                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center justify-center">
+                    <span class="mr-2 text-3xl">🔄</span> 2.6 Reeleição
+                </h3>
+                <div class="chart-container h-64"> <!-- Increased height for better visibility -->
+                    <canvas id="releicaoChart"></canvas>
+                </div>
+                <p class="text-lg text-[var(--cor-neutro-meio)] text-center mt-4">
+                    Apenas <span class="font-bold text-[var(--cor-roxo-profundo)]">13%</span> das senadoras eleitas
+                    foram reeleitas ao cargo. Nenhuma delas integra a terceira geração.
+                </p>
+            </div>
+
+            <!-- Storytelling Section 3: Atuação Legislativa -->
             <div class="md:col-span-2 lg:col-span-3 mt-8">
                 <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Atuação Legislativa</h2>
             </div>
 
-            <!-- Section 3.1: Bills Introduced -->
+            <!-- Section 3.1: Projetos de Lei Apresentados -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
                 <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">3.1 ✍️</span> Projetos de Lei Apresentados
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    O volume de proposições apresentadas pelas senadoras cresceu expressivamente, refletindo
-                    uma atuação legislativa cada vez mais robusta.
+                    O volume de proposições apresentadas por senadoras cresceu expressivamente, refletindo uma
+                    atuação legislativa cada vez mais robusta.
                 </p>
                 <div class="chart-container h-80">
                     <canvas id="projetosLeiChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[#6C757D]">
-                    <p class="text-sm">Crescimento da 2ª Geração: +57,6% em relação à 1ª.</p>
-                    <p class="text-sm">Crescimento da 3ª Geração: +178.3% em relação à 2ª.</p>
+                    <p class="text-sm">Aumento de 57,6% da 2ª Geração em relação à 1ª.</p>
+                    <p class="text-sm">Aumento de 178.3% da 3ª Geração em relação à 2ª.</p>
                     <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
@@ -416,14 +445,14 @@
                         </div>
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
-                                style="background-color: var(--cor-verde-crescimento);"></span>
+                                style="background-color: var(--cor-roxo-profundo);"></span>
                             <span>3ª Geração (PLs)</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 3.2: Growth of Legislative Production -->
+            <!-- Section 3.2: Crescimento da Produção Legislativa -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
                 <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">3.2 📈</span> Crescimento da Produção Legislativa
@@ -436,7 +465,7 @@
                 </div>
             </div>
 
-            <!-- Section 3.3: Bills on Gender Issues -->
+            <!-- Section 3.3: Projetos de Lei sobre Gênero -->
             <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
                 <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center justify-center">
                     <span class="mr-3 text-4xl">3.3 🚺</span> Projetos de Lei sobre Gênero
@@ -750,13 +779,19 @@
                         datalabels: {
                             display: true,
                             formatter: (value) => value.toFixed(1) + '%',
-                            color: '#FFFFFF',
+                            color: function(context) {
+                                const backgroundColor = context.dataset.backgroundColor[context.dataIndex];
+                                return (backgroundColor === corAmareloOtimismo) ? corNeutroEscuro : '#FFFFFF';
+                            },
                             font: {
                                 weight: 'bold',
                                 size: 16
                             },
                             textShadowBlur: 2,
-                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                            textShadowColor: function(context) {
+                                const backgroundColor = context.dataset.backgroundColor[context.dataIndex];
+                                return (backgroundColor === corAmareloOtimismo) ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)';
+                            }
                         }
                     }]
                 },
@@ -896,13 +931,19 @@
                         datalabels: {
                             display: true,
                             formatter: (value) => value.toFixed(1) + '%',
-                            color: '#FFFFFF',
+                            color: function(context) {
+                                const backgroundColor = context.dataset.backgroundColor[context.dataIndex];
+                                return (backgroundColor === corAmareloOtimismo) ? corNeutroEscuro : '#FFFFFF';
+                            },
                             font: {
                                 weight: 'bold',
                                 size: 16
                             },
                             textShadowBlur: 2,
-                            textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                            textShadowColor: function(context) {
+                                const backgroundColor = context.dataset.backgroundColor[context.dataIndex];
+                                return (backgroundColor === corAmareloOtimismo) ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)';
+                            }
                         }
                     }]
                 },
@@ -940,7 +981,7 @@
                 }
             });
 
-            // NEW Chart: Partidos que mais elegeram senadoras (2.4)
+            // NEW Chart: Partidos que mais elegeram senadoras (2.4) - Using stacked bars for counts and a line for percentages
             const ctxPartidosElegeram = document.getElementById('partidosElegeramChart').getContext('2d');
             new Chart(ctxPartidosElegeram, {
                 type: 'bar',
@@ -956,7 +997,7 @@
                             formatter: (value, context) => {
                                 const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
                                 const percentage = ((value / total) * 100).toFixed(1);
-                                return `${value} (${percentage}%)`;
+                                return `${value} (${percentage}%)`; // Show count and percentage
                             },
                             color: '#FFFFFF',
                             font: {
@@ -978,6 +1019,7 @@
                     scales: {
                         x: {
                             beginAtZero: true,
+                            max: 38, // Max value is the total number of senators (38)
                             title: {
                                 display: true,
                                 text: 'Número de Senadoras',
@@ -1007,11 +1049,12 @@
                     },
                     plugins: {
                         legend: {
-                            display: false
+                            display: false // Hide default legend
                         }
                     }
                 }
             });
+
 
             // Chart: Predominant Political Spectrum (2.5)
             const ctxEspectroPolitico = document.getElementById('espectroPoliticoChart').getContext('2d');
@@ -1108,7 +1151,41 @@
                                 font: {
                                     size: 16
                                 },
-                                padding: 20
+                                padding: 20,
+                                generateLabels: function (chart) {
+                                    const labels = [];
+                                    const dataset0 = chart.data.datasets[0];
+                                    const dataset1 = chart.data.datasets[1];
+
+                                    // Add labels for "Espectro Predominante" by generation
+                                    labels.push({
+                                        text: '1ª Geração (Esquerda)',
+                                        fillStyle: dataset0.backgroundColor[0],
+                                        strokeStyle: dataset0.borderColor,
+                                        lineWidth: dataset0.borderWidth
+                                    });
+                                    labels.push({
+                                        text: '2ª Geração (Centro)',
+                                        fillStyle: dataset0.backgroundColor[1],
+                                        strokeStyle: dataset0.borderColor,
+                                        lineWidth: dataset0.borderWidth
+                                    });
+                                    labels.push({
+                                        text: '3ª Geração (Direita)',
+                                        fillStyle: dataset0.backgroundColor[2],
+                                        strokeStyle: dataset0.borderColor,
+                                        lineWidth: dataset0.borderWidth
+                                    });
+
+                                    // Add label for "Outros Espectros"
+                                    labels.push({
+                                        text: dataset1.label,
+                                        fillStyle: dataset1.backgroundColor,
+                                        strokeStyle: dataset1.borderColor,
+                                        lineWidth: dataset1.borderWidth
+                                    });
+                                    return labels;
+                                }
                             }
                         }
                     }
@@ -1371,6 +1448,102 @@
                     }
                 }
             });
+
+            // Chart: Reeleição (2.6)
+            const releicaoCanvas = document.getElementById('releicaoChart');
+            if (releicaoCanvas) { // Check if the canvas element exists
+                const ctxReleicao = releicaoCanvas.getContext('2d');
+                if (ctxReleicao) { // Check if context was successfully obtained
+                    new Chart(ctxReleicao, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Reeleitas', 'Não Reeleitas'],
+                            datasets: [{
+                                label: 'Proporção de Senadoras Reeleitas',
+                                data: [13, 87], // 13% reeleitas, 87% não reeleitas
+                                backgroundColor: [corVerdeCrescimento, corCinzaClaroFundo],
+                                borderRadius: 8,
+                                datalabels: {
+                                    display: true,
+                                    formatter: (value) => value + '%',
+                                    color: '#FFFFFF',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 16
+                                    },
+                                    align: 'center',
+                                    anchor: 'center',
+                                    textShadowBlur: 2,
+                                    textShadowColor: 'rgba(0, 0, 0, 0.6)'
+                                }
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            indexAxis: 'y', // Horizontal bar chart
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    max: 100, // Percentage scale
+                                    title: {
+                                        display: true,
+                                        text: 'Percentual (%)',
+                                        color: corNeutroMeio,
+                                        font: {
+                                            size: 16
+                                        }
+                                    },
+                                    ticks: {
+                                        callback: function (value) {
+                                            return value + '%';
+                                        },
+                                        color: corNeutroMeio,
+                                        font: {
+                                            size: 14
+                                        }
+                                    }
+                                },
+                                y: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        color: corNeutroMeio,
+                                        font: {
+                                            size: 16
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false // Hide default legend
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function (context) {
+                                            let label = context.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.x !== null) {
+                                                label += context.parsed.x + '%';
+                                            }
+                                            return label;
+                                        },
+                                        ...defaultTooltipConfig.plugins.tooltip.callbacks
+                                    }
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    console.error("Falha ao obter o contexto 2D para releicaoChart.");
+                }
+            } else {
+                console.error("Elemento canvas 'releicaoChart' não encontrado.");
+            }
         });
     </script>
 </body>
