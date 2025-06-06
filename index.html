@@ -18,17 +18,31 @@
             --cor-verde-crescimento: #28A745;
             --cor-amarelo-otimismo: #FFC107;
             --cor-neutro-escuro: #212529;
+            /* Darkest neutral, good for primary text on light backgrounds */
             --cor-neutro-claro: #ADB5BD;
+            /* Lighter neutral, not used for text on main background */
             --cor-neutro-meio: #343A40;
+            /* Mid-range neutral, good for secondary text or chart elements */
             --cor-cinza-claro-fundo: #CED4DA;
+            /* Light grey for sections/chart fills */
             --cor-grafico-outros: #BBBBBB;
-            /* Cor para categoria 'Outros' */
+            /* Grey for 'Outros' in charts */
+
+            /* Novas variáveis para fundo e texto para melhor contraste */
+            --cor-fundo-suave: #F3F4F6;
+            /* Fundo suave para o corpo */
+            --cor-fundo-secao: #FFFFFF;
+            /* Fundo branco puro para as seções de conteúdo */
+            --cor-texto-geral: var(--cor-neutro-escuro);
+            /* Cor geral para o texto principal */
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--cor-neutro-escuro);
-            /* Dark Neutral */
+            background-color: var(--cor-fundo-suave);
+            /* Usando o novo fundo suave */
+            color: var(--cor-texto-geral);
+            /* Cor padrão para o texto do corpo */
         }
 
         .chart-container {
@@ -56,6 +70,51 @@
         .no-svg-mermaid {
             display: none;
             /* A hidden element to confirm no SVG/Mermaid usage */
+        }
+
+        /* Ajustes para o fundo das seções usando a nova variável */
+        .bg-white {
+            background-color: var(--cor-fundo-secao);
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-xl */
+            padding: 2rem;
+            /* p-8 */
+            margin-bottom: 1.5rem;
+            /* mb-6 */
+        }
+
+
+        /* Ajustes específicos de cor de texto para cabeçalho e rodapé */
+        header h1 {
+            /* As cores dos spans já são primárias e contrastam bem */
+            color: var(--cor-roxo-profundo);
+            /* Mantendo a cor principal do título */
+        }
+
+        header h1 span:first-child {
+            color: var(--cor-roxo-profundo); /* Changed to purple */
+        }
+
+        header h1 span:last-child {
+            color: var(--cor-roxo-profundo);
+        }
+
+        header p.text-xl,
+        header p.text-lg,
+        header p.text-md {
+            color: var(--cor-neutro-meio);
+            /* Melhor contraste em fundo claro */
+        }
+
+        footer {
+            color: var(--cor-neutro-meio);
+            /* Melhor contraste em fundo claro */
+        }
+
+        footer p.text-sm {
+            color: var(--cor-neutro-meio);
         }
 
         /* Print styles to optimize A4 viewing */
@@ -88,7 +147,7 @@
                 /* Force text colors to black for printing */
             }
 
-            .bg-[#F8F9FA] {
+            .bg-white {
                 background-color: #FFFFFF !important;
                 /* Ensure white background for sections */
                 box-shadow: none !important;
@@ -210,19 +269,19 @@
 
     <div class="container mx-auto p-8 lg:p-12 max-w-6xl">
         <header class="text-center mb-12">
-            <h1 class="text-5xl font-extrabold text-white mb-4 leading-tight">
-                <span class="block text-[var(--cor-amarelo-otimismo)]">Evolução e Produção Legislativa</span>
+            <h1 class="text-5xl font-extrabold text-[var(--cor-roxo-profundo)] mb-4 leading-tight">
+                <span class="block text-[var(--cor-roxo-profundo)]">Evolução e Produção Legislativa</span>
                 <span class="block text-[var(--cor-roxo-profundo)]">Três Gerações de Senadoras Brasileiras</span>
             </h1>
-            <p class="text-xl text-[var(--cor-neutro-claro)] leading-relaxed max-w-3xl mx-auto">
+            <p class="text-xl text-[var(--cor-neutro-meio)] leading-relaxed max-w-3xl mx-auto">
                 Este estudo analisa o cenário das senadoras eleitas em três gerações: a 1ª Geração (1991-2002),
                 a 2ª Geração (2003-2010) e a 3ª Geração (2011-2022). A pesquisa abrange a produção legislativa
                 no período de 1º de fevereiro de 1991 a 31 de março de 2025, data de sua conclusão.
             </p>
-            <p class="text-lg text-[var(--cor-neutro-claro)] mt-6">
+            <p class="text-lg text-[var(--cor-neutro-meio)] mt-6">
                 Elaborado por: <span class="font-bold text-[var(--cor-rosa-empoderamento)]">Alana Fagundes Valério</span>
             </p>
-            <p class="text-md text-[var(--cor-neutro-claro)]">
+            <p class="text-md text-[var(--cor-neutro-meio)]">
                 Resultados da pesquisa de doutorado defendida na Universidade de São Paulo, em 2025.
             </p>
         </header>
@@ -231,45 +290,57 @@
 
             <!-- Storytelling Section 1: Evolução da Representação -->
             <div class="md:col-span-2 lg:col-span-3">
-                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Evolução da Representação</h2>
+                <h2 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6">Evolução da Representação</h2>
             </div>
 
             <!-- Section 1.1: Senadoras Eleitas por Geração -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">1.1 📈</span> Senadoras Eleitas por Geração
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">1.1 📈</span> Senadoras por Geração
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
-                    O número de senadoras eleitas aumentou significativamente entre as gerações, com a terceira
-                    geração representando mais da metade do total.
+                    O número de senadoras eleitas tem aumentado consistentemente ao longo das gerações.
                 </p>
                 <div class="chart-container">
                     <canvas id="senadorasEleitasChart"></canvas>
                 </div>
                 <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
                     <p class="text-sm">Fonte: Dados Abertos do Senado Federal 2025</p>
-                    <p class="text-sm mt-2">
-                        *A "Média percentual no período (%)" refere-se à proporção de senadoras eleitas em cada
-                        geração em relação ao total de parlamentares eleitas como titulares.
-                    </p>
-                    <!-- Custom Legend for Elected Senators by Generation -->
                     <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
-                        <!-- Increased font size for text-base -->
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
                                 style="background-color: var(--cor-amarelo-otimismo);"></span>
-                            <span>1ª Geração (Número de Senadoras)</span>
+                            <span>1ª Geração (1991-2002)</span>
                         </div>
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
                                 style="background-color: var(--cor-azul-confianca);"></span>
-                            <span>2ª Geração (Número de Senadoras)</span>
+                            <span>2ª Geração (2003-2010)</span>
                         </div>
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
                                 style="background-color: var(--cor-roxo-profundo);"></span>
-                            <span>3ª Geração (Número de Senadoras)</span>
+                            <span>3ª Geração (2011-2022)</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1.2: Crescimento da Representação Política Feminina no Senado entre Titulares (1991-2022) -->
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">1.2 📊</span> Crescimento da Representação Política Feminina no Senado entre Titulares (1991-2022)
+                </h3>
+                <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
+                    O percentual de senadoras eleitas em relação ao total de parlamentares titulares demonstra
+                    uma tendência de crescimento da representação feminina.
+                </p>
+                <div class="chart-container">
+                    <canvas id="crescimentoRepresentacaoChart"></canvas>
+                </div>
+                <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
+                    <p class="text-sm">Fonte: Dados Abertos do Senado Federal 2025</p>
+                    <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
                         <div class="flex items-center">
                             <span class="w-3 h-3 rounded-full mr-2"
                                 style="background-color: var(--cor-verde-crescimento);"></span>
@@ -279,10 +350,10 @@
                 </div>
             </div>
 
-            <!-- Section 1.2: Composição Atual do Senado (2025) -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
-                    <span class="mr-3 text-4xl">1.2 🏛️</span> Composição Atual do Senado (2025)
+            <!-- Section 1.3: Composição Atual do Senado (2025) -->
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center">
+                    <span class="mr-3 text-4xl">1.3 🏛️</span> Composição Atual do Senado (2025)
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
                     Em 31 de março de 2025, a representação feminina no Senado Federal ainda é minoritária,
@@ -303,12 +374,12 @@
 
             <!-- Storytelling Section 2: Perfil das Senadoras -->
             <div class="md:col-span-2 lg:col-span-3 mt-8">
-                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Perfil das Senadoras</h2>
+                <h2 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6">Perfil das Senadoras</h2>
             </div>
 
             <!-- Section 2.1: Capital Político -->
-            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+            <div class="bg-white rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">💼</span> 2.1 Capital Político
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -320,8 +391,8 @@
             </div>
 
             <!-- Section 2.2: Raça/Etnia -->
-            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+            <div class="bg-white rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">👥</span> 2.2 Raça/Etnia
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -333,8 +404,8 @@
             </div>
 
             <!-- Section 2.3: Formação Acadêmica -->
-            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-1">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+            <div class="bg-white rounded-lg p-8 shadow-xl md:col-span-1">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">🎓</span> 2.3 Formação Acadêmica
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -346,8 +417,8 @@
             </div>
 
             <!-- Section 2.4: Partidos que mais elegeram senadoras -->
-            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+            <div class="bg-white rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">🗳️</span> 2.4 Partidos que mais elegeram senadoras
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -360,8 +431,8 @@
             </div>
 
             <!-- Section 2.5: Espectro Político Predominante -->
-            <div class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center">
+            <div class="bg-white rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center">
                     <span class="mr-2 text-3xl">⚖️</span> 2.5 Espectro Político Predominante
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -399,11 +470,11 @@
 
             <!-- Section 2.6: Reeleição -->
             <div
-                class="bg-[#F8F9FA] rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center">
-                <h3 class="text-xl font-semibold text-[var(--cor-rosa-empoderamento)] mb-4 flex items-center justify-center">
+                class="bg-white rounded-lg p-8 shadow-xl md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center">
+                <h3 class="text-xl font-semibold text-[var(--cor-neutro-escuro)] mb-4 flex items-center justify-center">
                     <span class="mr-2 text-3xl">🔄</span> 2.6 Reeleição
                 </h3>
-                <div class="chart-container h-64"> <!-- Increased height for better visibility -->
+                <div class="chart-container h-64">
                     <canvas id="releicaoChart"></canvas>
                 </div>
                 <p class="text-lg text-[var(--cor-neutro-meio)] text-center mt-4">
@@ -414,12 +485,12 @@
 
             <!-- Storytelling Section 3: Atuação Legislativa -->
             <div class="md:col-span-2 lg:col-span-3 mt-8">
-                <h2 class="text-3xl font-bold text-[var(--cor-rosa-empoderamento)] mb-6">Atuação Legislativa</h2>
+                <h2 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6">Atuação Legislativa</h2>
             </div>
 
             <!-- Section 3.1: Projetos de Lei Apresentados -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">3.1 ✍️</span> Projetos de Lei Apresentados
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -429,7 +500,7 @@
                 <div class="chart-container h-80">
                     <canvas id="projetosLeiChart"></canvas>
                 </div>
-                <div class="mt-8 text-center text-[#6C757D]">
+                <div class="mt-8 text-center text-[var(--cor-neutro-meio)]">
                     <p class="text-sm">Aumento de 57,6% da 2ª Geração em relação à 1ª.</p>
                     <p class="text-sm">Aumento de 178.3% da 3ª Geração em relação à 2ª.</p>
                     <div class="flex justify-center flex-wrap gap-4 mt-4 text-base">
@@ -453,8 +524,8 @@
             </div>
 
             <!-- Section 3.2: Crescimento da Produção Legislativa -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center">
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center">
                     <span class="mr-3 text-4xl">3.2 📈</span> Crescimento da Produção Legislativa
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6">
@@ -466,8 +537,8 @@
             </div>
 
             <!-- Section 3.3: Projetos de Lei sobre Gênero -->
-            <div class="bg-[#F8F9FA] rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
-                <h3 class="text-3xl font-bold text-[var(--cor-azul-confianca)] mb-6 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-xl p-8 mb-6 md:col-span-2 lg:col-span-3">
+                <h3 class="text-3xl font-bold text-[var(--cor-neutro-escuro)] mb-6 flex items-center justify-center">
                     <span class="mr-3 text-4xl">3.3 🚺</span> Projetos de Lei sobre Gênero
                 </h3>
                 <p class="text-lg text-[var(--cor-neutro-meio)] mb-6 text-center">
@@ -506,9 +577,9 @@
 
         </main>
 
-        <footer class="text-center mt-12 text-[var(--cor-neutro-claro)] text-sm">
+        <footer class="text-center mt-12 text-[var(--cor-neutro-meio)] text-sm">
             <p>&copy; 2025 Deep Research Report.</p>
-            <p class="text-sm text-[var(--cor-neutro-claro)] mt-4">
+            <p class="text-sm text-[var(--cor-neutro-meio)] mt-4">
                 Os dados e informações contidos neste infográfico são resultados de pesquisa de doutorado. Conforme os
                 princípios da Ciência Aberta, o uso e compartilhamento dos dados são permitidos, desde que a autoria de
                 Alana Fagundes Valério (Universidade de São Paulo, 2025) seja devidamente mencionada.
@@ -591,7 +662,7 @@
                 textShadowColor: 'transparent'
             };
 
-            // Chart: Elected Senators by Generation
+            // Chart: 1.1 Senadoras por Geração (Separado do percentual)
             const ctxSenadorasEleitas = document.getElementById('senadorasEleitasChart').getContext('2d');
             new Chart(ctxSenadorasEleitas, {
                 type: 'bar',
@@ -614,26 +685,6 @@
                             anchor: 'center',
                             textShadowBlur: 2,
                             textShadowColor: 'rgba(0, 0, 0, 0.6)'
-                        }
-                    }, {
-                        label: 'Média percentual no período (%)',
-                        data: [18, 26, 55],
-                        type: 'line',
-                        borderColor: corVerdeCrescimento,
-                        backgroundColor: `${corVerdeCrescimento}33`,
-                        fill: false,
-                        tension: 0.3,
-                        yAxisID: 'y1',
-                        datalabels: {
-                            display: true,
-                            formatter: (value) => value + '%',
-                            color: corNeutroMeio,
-                            align: 'end',
-                            anchor: 'end',
-                            offset: 8,
-                            font: {
-                                size: 14
-                            }
                         }
                     }]
                 },
@@ -669,14 +720,67 @@
                                     size: 14
                                 }
                             }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
                         },
-                        y1: {
-                            type: 'linear',
-                            position: 'right',
-                            beginAtZero: true,
+                        datalabels: {
+                            ...defaultDatalabelsConfig,
+                        }
+                    }
+                }
+            });
+
+            // Chart: 1.2 Crescimento da Representação Política Feminina no Senado entre Titulares (1991-2022)
+            const ctxCrescimentoRepresentacao = document.getElementById('crescimentoRepresentacaoChart').getContext('2d');
+            new Chart(ctxCrescimentoRepresentacao, {
+                type: 'line',
+                data: {
+                    labels: ['1ª Geração (1991-2002)', '2ª Geração (2003-2010)', '3ª Geração (2011-2022)'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Média percentual no período (%)',
+                        data: [18, 26, 55],
+                        borderColor: corVerdeCrescimento,
+                        backgroundColor: `${corVerdeCrescimento}33`,
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: corVerdeCrescimento,
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        datalabels: {
+                            display: true,
+                            formatter: (value) => value + '%',
+                            color: corNeutroMeio,
+                            align: 'end',
+                            anchor: 'end',
+                            offset: 8,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...defaultTooltipConfig,
+                    scales: {
+                        x: {
                             grid: {
-                                drawOnChartArea: false
+                                display: false
                             },
+                            ticks: {
+                                color: corNeutroMeio,
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
                             title: {
                                 display: true,
                                 text: 'Percentual (%)',
@@ -707,7 +811,8 @@
                 }
             });
 
-            // Chart: Current Senate Composition (Donut Chart)
+
+            // Chart: 1.3 Composição Atual do Senado (Donut Chart)
             const ctxComposicaoSenado = document.getElementById('composicaoSenadoChart').getContext('2d');
             new Chart(ctxComposicaoSenado, {
                 type: 'doughnut',
